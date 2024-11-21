@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    user-select: none;
+}
+
+/* Scroll to top button css */
+#scrollToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #DF927D;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+#scrollToTop:hover {
+    background-color: #E7FAF9;
+    color: #DF927D;
+}
+
+/* header and nav css */
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    transition: top 0.3s;
+    /* Smooth transition when hiding */
+}
+
+
+/* Collapsible Content Styles */
+.collapse-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #DF927D;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.collapse-button:hover {
+    background-color: #b76955;
+}
+
+.content {
+    display: block;
+    /* Default is visible */
+    margin-top: 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: 0.6s;
+    border-radius: 5px;
+}
+
+/* Active Link Styling */
+nav ul li a.active,
+nav ul li a:hover {
+    background-color: #DF927D;
+    color: white;
+}
+
+/* buttons css */
+#try-now {
+    border: 2px solid #E7FAF9;
+    background: transparent;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #E7FAF9;
+    transition: 0.6s;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#try-now:hover {
+    background-color: #DF927D;
+    color: #E7FAF9;
+}
+
+/* landing page first section css */
+.home-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    background-color: black;
+}
+
+.home-container {
+    max-width: 700px;
+}
+
+.home-container h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.home-container p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#home-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(50px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#home-content h1.show {
+    animation: bounce 1s ease-out;
+    color: #DF927D;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#explore {
+    border: 2px solid #E7FAF9;
+    background: transparent;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #E7FAF9;
+    transition: 0.6s;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#explore:hover {
+    background-color: #E7FAF9;
+}
+
+/* section css */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+/* each section has a different background color */
+
+#Home {
+    background-color: black;
+}
+
+#Features {
+    background-color: black;
+}
+
+#Contact {
+    background-color: black;
+}
+
+#AboutUs {
+    background-color: black;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    nav ul li a {
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: #DF927D;
+        color: white;
+        border: none;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+        background-color: #b76955;
+    }
+
+    nav.open ul {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .home-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .home-container p {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .home-container h1 {
+        font-size: 3rem;
+    }
+
+    .home-container p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    .home-container h1 {
+        font-size: 4rem;
+    }
+
+    .home-container p {
+        font-size: 1.5rem;
+    }
+}
