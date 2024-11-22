@@ -20,28 +20,32 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.push(aList);
     });
 
-    //  Intersection Observer to detect when a section is in the viewport
-    const observerOptions = {
-        threshold: 0.6 // 60%
-    };
+    const highlightCurrentSection = () => {
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const id = section.getAttribute('id');
 
-    // creating the IntersectionObserver instance
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) { // If the section is in view
-                const currentId = entry.target.getAttribute('id'); // Get the section ID
+            if (rect.top >= 0 && rect.top < window.innerHeight * 0.6) { // Section is in view
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === currentId) {
+                    if (link.getAttribute('href').substring(1) === id) {
                         link.classList.add('active');
                     }
                 });
             }
         });
-    }, observerOptions);
+    };
+    // Attach scroll event listener
+    window.addEventListener('scroll', () => {
+        highlightCurrentSection();
 
-    // Observe each section for visibility
-    sections.forEach(section => observer.observe(section));
+        // Show or hide scroll-to-top button
+        if (window.scrollY > window.innerHeight) {
+            scrollToTopBtn.style.display = 'block';
+        } else {
+            scrollToTopBtn.style.display = 'none';
+        }
+    });
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -106,5 +110,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerText = document.querySelector('#home-content h1');
     exploreButton.addEventListener('click', () => {
         headerText.classList.add('show');
+    });
+});
+document.addEventListener('DOMContentLoaded', function () {
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', function () {
+        let currentScroll = window.pageYOffset;
+
+        // Hide the header when scrolling down and show when scrolling up
+        if (currentScroll > lastScrollTop) {
+            header.style.top = `-200px`;
+        } else {
+            header.style.top = '0';
+        }
+
+        // If at the top of the page, show the header
+        if (currentScroll <= 0) {
+            header.style.top = '0';
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
 });

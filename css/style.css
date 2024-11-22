@@ -28,16 +28,16 @@
     color: #DF927D;
 }
 
-/* header and nav css */
 header {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 10px 0;
     position: fixed;
+    top: 0;
     width: 100%;
-    z-index: 10;
-    transition: top 0.3s;
-    /* Smooth transition when hiding */
+    z-index: 1000;
+    transition: top 0.5s ease-in-out;
+    height: 200px;
 }
 
 
@@ -228,16 +228,18 @@ nav ul li a:hover {
 }
 
 @media (max-width: 768px) {
+
+
     nav ul {
-        flex-direction: column;
-        display: none;
         width: 100%;
+        flex-direction: column;
         background-color: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 100;
         transition: transform 0.3s ease-in-out;
+    }
+
+    nav.open ul {
+        display: flex;
+        transform: translateY(0);
     }
 
     nav ul li {
@@ -249,26 +251,6 @@ nav ul li a:hover {
     nav ul li a {
         padding: 15px;
         font-size: 18px;
-    }
-
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-        padding: 10px 20px;
-        background-color: #DF927D;
-        color: white;
-        border: none;
-        font-size: 20px;
-        transition: background-color 0.3s ease;
-    }
-
-    .menu-toggle:hover {
-        background-color: #b76955;
-    }
-
-    nav.open ul {
-        display: flex;
-        transform: translateY(0);
     }
 
     .home-container h1 {
